@@ -43,7 +43,7 @@ export class TasksComponent {
 
   onCompleteTask(id: string) {
     this.tasks = this.tasks.filter((task) => task.id !== id);
-    // console.log('onCompleteTask was initiated');
+    console.log('onCompleteTask was initiated');
     
   }
 }
