@@ -1,9 +1,28 @@
 <app-header />
 
-    <main>
-        <ul id="users">
-            <li>
-                <app-user />
-            </li>
-        </ul>
-    </main>
+<main>
+  <ul id="users">
+    @for (user of users; track user.id) {
+    <li>
+      <app-user [user]="user" [selected]="user.id === selectedUserId" (select)="onSelectUser($event)" />
+    </li>
+    }
+  </ul>
+
+  @if (selectedUser) {
+  <app-tasks [userId]="selectedUser.id" [name]="selectedUser.name" />
+  } @else {
+  <p id="fallback">Select a user to see their tasks!</p>
+  }
+
+  <!-- --- -->
+  <!-- alternative solution; accesing individual properties -->
+  <!-- <li> 
+      <app-user
+        [avatar]="users[3].avatar"
+        [name]="users[3].name"
+        [id]="users[3].id"
+        (select)="onSelectUser($event)"
+      />
+    </li> -->
+</main>
