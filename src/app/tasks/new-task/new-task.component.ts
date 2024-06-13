@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Output, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
+import { type NewTaskData } from '../task/task.model';
+
 @Component({
   selector: 'app-new-task',
   standalone: true,
@@ -10,11 +12,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class NewTaskComponent {
   @Output() cancel = new EventEmitter<void>();
-  @Output() add = new EventEmitter<{
-    title: string;
-    summary: string;
-    date: string;
-  }>();
+  @Output() add = new EventEmitter<NewTaskData>();
 
   //standard angular change detection mechanizm - regular properties
   enteredTitle = '';
@@ -31,6 +29,8 @@ export class NewTaskComponent {
   }
 
   onSubmit() {
+    console.log("onSubmit() worked");
+    
     this.add.emit({
       title: this.enteredTitle,
       summary: this.enteredSummary,
