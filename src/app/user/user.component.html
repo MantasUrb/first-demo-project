@@ -1,9 +1,10 @@
-<div>
+<app-card>
   <!-- input decorator approach -->
   <button [class.active]="selected" (click)="onSelectUser()">
     <img [src]="imagePath" [alt]="user.name" />
     <span>{{ user.name }}</span>
   </button>
+
 
 <!-- signal approach -->
   <!-- must execute image path as a function 
@@ -16,4 +17,4 @@
     <span>{{ name() }}</span>
   </button> -->
 <!-- signal drawback -> can't change the value from inside the user component -->
-</div>
+</app-card>
