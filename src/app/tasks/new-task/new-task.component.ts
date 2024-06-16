@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Output, inject, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
-import { type NewTaskData } from '../task/task.model';
 import { TasksService } from '../tasks.service';
 
 @Component({
@@ -14,7 +13,7 @@ import { TasksService } from '../tasks.service';
 export class NewTaskComponent {
   @Input({ required: true }) userId!: string;
   @Output() close = new EventEmitter<void>();
-  // @Output() add = new EventEmitter<NewTaskData>(); no need to emit data if services are used;
+  // @Output() add = new EventEmitter<NewTaskData>(); no need to emit data when tasks.service.ts is used;
 
   //standard angular change detection mechanizm - regular properties
   enteredTitle = '';
@@ -32,6 +31,7 @@ export class NewTaskComponent {
   }
 
   onSubmit() {
+    // using tasksService (service) approach
     this.tasksService.addTask(
       {
         title: this.enteredTitle,
@@ -40,7 +40,7 @@ export class NewTaskComponent {
       },
       this.userId
     );
-    this.close.emit()
+    this.close.emit();
 
     // way when data is emitted from input fields
     // this.add.emit({

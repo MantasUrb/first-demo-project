@@ -1,7 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { TaskComponent } from './task/task.component';
 import { NewTaskComponent } from './new-task/new-task.component';
-import { type NewTaskData } from './task/task.model';
 import { TasksService } from './tasks.service';
 @Component({
   selector: 'app-tasks',
@@ -16,23 +15,23 @@ export class TasksComponent {
   isAddingTask = false;
 
   // add new property that will instantiate tasksService
+  // not sharing that one object that we create here
+  // (explanation: 59. Getting Started with Dependency Injection)
   // private tasksService = new TasksService();
   // --
-  // instead you're using dependency injection
-  constructor(private tasksService: TasksService) {}
+  // // instead you're using dependency injection
+  // you 'tell' ng which type of value you need 
+  // and ng creates it and provides it as an argument
+  constructor(private tasksService: TasksService) {} 
+  
 
   get selectedUserTasks() {
     return this.tasksService.getUserTasks(this.userId);
   }
-
-  onCompleteTask(id: string) {
-    console.log(id);
-  }
-
   onStartAddTask() {
     this.isAddingTask = true;
   }
-  onCancelAddTask() {
+  onCloseAddTask() {
     this.isAddingTask = false;
   }
 }
