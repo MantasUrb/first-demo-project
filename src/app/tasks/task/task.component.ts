@@ -14,9 +14,13 @@ import { TasksService } from '../tasks.service';
 export class TaskComponent {
   @Input({ required: true }) task!: Task;
   // @Output() complete = new EventEmitter<string>();
+  // no event emitters needed, since service is being
+  // used from this file by injecting TasksService
   private tasksService = inject(TasksService)
 
   onCompleteTask() {
+    //TasksService is being used to call removeTask
+    // removeTask expects to receive ID of the task as an input;
     this.tasksService.removeTask(this.task.id)
   }
 }
