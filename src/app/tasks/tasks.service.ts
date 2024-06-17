@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { type NewTaskData } from './task/task.model';
 
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 export class TasksService {
   private tasks = [
     {
@@ -28,6 +28,14 @@ export class TasksService {
       dueDate: '2024-06-15',
     },
   ];
+
+  constructor() {
+    const tasks = localStorage.getItem('tasks'); // in the browsers localstorage we're storing some tasks with the key of 'tasks'
+
+    if (tasks) { // if some data was stored in the localStorag, override tasks with the tasks from localStorage
+      this.tasks = JSON.parse(tasks); //takes JSON to convert them back into array, because from localStorage retrieved data is string
+    }
+  }
 
   getUserTasks(userId: string) {
     return this.tasks.filter((task) => task.userId === userId);
