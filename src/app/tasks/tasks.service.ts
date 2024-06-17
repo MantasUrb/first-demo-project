@@ -32,7 +32,8 @@ export class TasksService {
   constructor() {
     const tasks = localStorage.getItem('tasks'); // in the browsers localstorage we're storing some tasks with the key of 'tasks'
 
-    if (tasks) { // if some data was stored in the localStorag, override tasks with the tasks from localStorage
+    if (tasks) {
+      // if some data was stored in the localStorag, override tasks with the tasks from localStorage
       this.tasks = JSON.parse(tasks); //takes JSON to convert them back into array, because from localStorage retrieved data is string
     }
   }
@@ -49,9 +50,17 @@ export class TasksService {
       summary: taskData.summary,
       dueDate: taskData.date,
     });
+    this.saveTasks();
   }
 
   removeTask(id: string) {
     this.tasks = this.tasks.filter((task) => task.id !== id);
+    this.saveTasks();
+  }
+
+  private saveTasks() {
+    //JSON.stringify; used to convert this.tasks, managed by this service;
+    //this will be saved in the localStorage
+    localStorage.setItem('tasks', JSON.stringify(this.tasks))
   }
 }
