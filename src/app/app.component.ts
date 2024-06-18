@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+// no need for imports when using modules
 // import { RouterOutlet } from '@angular/router';
 // import { HeaderComponent } from './header/header.component';
 // import { UserComponent } from './user/user.component';
