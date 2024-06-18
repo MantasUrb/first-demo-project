@@ -1,13 +1,13 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { TaskComponent } from './task/task.component';
-import { NewTaskComponent } from './new-task/new-task.component';
+// import { TaskComponent } from './task/task.component';
+// import { NewTaskComponent } from './new-task/new-task.component';
 import { TasksService } from './tasks.service';
 @Component({
   selector: 'app-tasks',
-  standalone: true,
+  standalone: false,
   templateUrl: './tasks.component.html',
   styleUrl: './tasks.component.css',
-  imports: [TaskComponent, NewTaskComponent],
+  // imports: [TaskComponent, NewTaskComponent], removing imports array as changing this component to module based one
 })
 export class TasksComponent {
   @Input({ required: true }) userId!: string;

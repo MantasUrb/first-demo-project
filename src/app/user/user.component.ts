@@ -10,14 +10,14 @@ import {
 } from '@angular/core';
 
 import { User } from './user.model'; 
-import { CardComponent } from '../shared/card/card.component';
+// import { CardComponent } from '../shared/card/card.component';
 
 @Component({
   selector: 'app-user',
-  standalone: true,
+  standalone: false,
   templateUrl: './user.component.html',
   styleUrl: './user.component.css',
-  imports:[CardComponent]
+  // imports:[CardComponent] changin user component to non-standalone component approach
 })
 export class UserComponent {
   // convincing ts with ! that we will receive values for avatar and name
