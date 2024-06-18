@@ -4,22 +4,13 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app/app.component';
 import { HeaderComponent } from './app/header/header.component';
-import { TasksComponent } from './app/tasks/tasks.component';
 import { UserComponent } from './app/user/user.component';
-import { TaskComponent } from './app/tasks/task/task.component';
-import { NewTaskComponent } from './app/tasks/new-task/new-task.component';
 import { SharedModule } from './app/shared/shared.module';
+import { TasksModule } from './app/tasks/tasks.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    UserComponent,
-    TasksComponent,
-    TaskComponent,
-    NewTaskComponent,
-  ],
+  declarations: [AppComponent, HeaderComponent, UserComponent],
   bootstrap: [AppComponent],
-  imports: [BrowserModule, FormsModule, SharedModule],
+  imports: [BrowserModule, SharedModule, TasksModule],
 })
 export class AppModule {}

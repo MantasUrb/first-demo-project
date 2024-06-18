@@ -5,11 +5,11 @@ import {
   EventEmitter,
   Input,
   Output,
-  input,
-  output,
+  // input,
+  // output,
 } from '@angular/core';
 
-import { User } from './user.model'; 
+import { User } from './user.model';
 // import { CardComponent } from '../shared/card/card.component';
 
 @Component({
