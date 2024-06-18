@@ -7,21 +7,19 @@ import { HeaderComponent } from './app/header/header.component';
 import { TasksComponent } from './app/tasks/tasks.component';
 import { UserComponent } from './app/user/user.component';
 import { TaskComponent } from './app/tasks/task/task.component';
-import { CardComponent } from './app/shared/card/card.component';
 import { NewTaskComponent } from './app/tasks/new-task/new-task.component';
+import { SharedModule } from './app/shared/shared.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     UserComponent,
-    CardComponent,
     TasksComponent,
     TaskComponent,
-    CardComponent,
-    NewTaskComponent
+    NewTaskComponent,
   ],
   bootstrap: [AppComponent],
-  imports: [BrowserModule, FormsModule],
+  imports: [BrowserModule, FormsModule, SharedModule],
 })
 export class AppModule {}
